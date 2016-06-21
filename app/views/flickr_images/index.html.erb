@@ -1,0 +1,8 @@
+<div>
+  <% flickr_images.each do |image| %>
+    <div>
+      <%= image.title %>
+      <%= image_tag image.url(:thumb) %>
+    </div>
+  <% end %>
+</div>
