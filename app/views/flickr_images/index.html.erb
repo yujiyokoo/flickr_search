@@ -1,4 +1,10 @@
 <div>
+  <%= form_for search_form, url: flickr_images_path, method: :get do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<div>
   <% flickr_images.each do |image| %>
     <div>
       <%= image.title %>
