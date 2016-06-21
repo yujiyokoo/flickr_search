@@ -19,7 +19,7 @@ RSpec.describe 'flickr_images/index.html.erb' do
   end
 
   context 'with images' do
-    let(:image) { double('image', url: 'image.jpg', title: 'image title') }
+    let(:image) { double('image', url: 'image.jpg', title: 'image title', id: '123') }
 
     before do
       allow(view).to receive(:flickr_images) { [image] }
@@ -29,6 +29,12 @@ RSpec.describe 'flickr_images/index.html.erb' do
       render
 
       expect(rendered).to have_content('image title')
+    end
+
+    it 'shows a link to image details' do
+      render
+
+      expect(rendered).to have_selector('a[href="/flickr_images/123"]')
     end
 
     it 'shows image with the image url' do

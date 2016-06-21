@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe FlickrImagesController, type: :controller do
   let(:flickr) { double('flickr', photos: photos) }
-  let(:photos) { double('photos', search: []) }
+  let(:photos) { double('photos', search: [], find_by_id: nil) }
   let(:flickr_class) { double('Flickr', new: flickr) }
 
   before do
@@ -23,6 +23,17 @@ RSpec.describe FlickrImagesController, type: :controller do
       it 'calls flickr search with params' do
         get :index, flickr_search_form: { keyword: 'cats' }
         expect(photos).to have_received(:search).with(text: 'cats')
+      end
+    end
+  end
+
+  describe '#show' do
+    render_views
+
+    context 'with an image id' do
+      it 'finds image by id' do
+        get :show, id: '123'
+        expect(photos).to have_received(:find_by_id).with('123')
       end
     end
   end

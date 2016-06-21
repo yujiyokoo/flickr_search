@@ -2,7 +2,7 @@ class FlickrImagesController < ApplicationController
   def index
   end
 
-  helper_method :flickr, :flickr_images, :search_form
+  helper_method :flickr, :flickr_images, :search_form, :flickr_image
 
   private
 
@@ -24,5 +24,9 @@ class FlickrImagesController < ApplicationController
 
   def keyword
     params.fetch(:flickr_search_form, {}).fetch(:keyword, nil)
+  end
+
+  def flickr_image
+    @image ||= flickr.photos.find_by_id(params[:id])
   end
 end

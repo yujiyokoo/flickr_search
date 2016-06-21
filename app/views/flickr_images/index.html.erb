@@ -7,8 +7,10 @@
 <div>
   <% flickr_images.each do |image| %>
     <div>
-      <%= image.title %>
-      <%= image_tag image.url(:thumb) %>
+      <%= link_to flickr_image_path(image.id) do %>
+        <%= image.title %>
+        <%= image_tag image.url(:thumb) %>
+      <% end %>
     </div>
   <% end %>
 </div>
