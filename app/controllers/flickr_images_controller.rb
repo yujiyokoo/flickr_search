@@ -9,16 +9,12 @@ class FlickrImagesController < ApplicationController
 
   private
 
-  def search_form
-    @search_form = FlickrSearchForm.new(keyword: keyword)
-  end
-
   def flickr
     @flickr ||= Flickr.new(YAML.load(ERB.new(File.read("#{Rails.root}/config/flickr.yml.erb")).result))
   end
 
   def flickr_images
-    if keyword
+    if keyword.present?
       @flickr_images ||= flickr.photos.search(text: keyword, page: page)
     else
       []
