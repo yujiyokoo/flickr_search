@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'flickr_images/index.html.erb' do
   before do
-    allow(view).to receive(:flickr_images) { [] }
-    allow(view).to receive(:search_form) { FlickrSearchForm.new }
+    allow(view).to receive(:flickr_images) { double('flickr_images', page: 1, pages: 10, to_a: []) }
+    allow(view).to receive(:keyword) { '' }
+    allow(view).to receive(:page) { nil }
   end
 
   it 'shows a text field in a search form' do
@@ -22,7 +23,7 @@ RSpec.describe 'flickr_images/index.html.erb' do
     let(:image) { double('image', url: 'image.jpg', title: 'image title', id: '123') }
 
     before do
-      allow(view).to receive(:flickr_images) { [image] }
+      allow(view).to receive(:flickr_images) { double('flickr_images', page: 1, pages: 10, to_a: [image]) }
     end
 
     it 'shows title' do

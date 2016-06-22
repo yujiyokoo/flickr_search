@@ -1,6 +1,12 @@
-<div>
-  <%= link_to flickr_image_path(image.id) do %>
-    <%= image.title %>
-    <%= image_tag image.url(:thumb) %>
-  <% end %>
+<div class="search-result-item">
+  <div class="left">
+    <%= link_to flickr_image_path(image.id), title: image.title do %>
+      <%= image_tag image.url(:thumb), alt: image.title %>
+    <% end %>
+  </div>
+  <div class="right">
+    <%= link_to flickr_image_path(image.id), title: image.title do %>
+      <%= image.title %>
+    <% end %>
+  </div>
 </div>

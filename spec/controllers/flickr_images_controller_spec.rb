@@ -21,8 +21,8 @@ RSpec.describe FlickrImagesController, type: :controller do
 
     context 'with search params' do
       it 'calls flickr search with params' do
-        get :index, flickr_search_form: { keyword: 'cats' }
-        expect(photos).to have_received(:search).with(text: 'cats')
+        get :index, keyword: 'cats', page: 25
+        expect(photos).to have_received(:search).with(text: 'cats', page: '25')
       end
     end
   end

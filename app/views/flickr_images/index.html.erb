@@ -2,7 +2,7 @@
 <div>
   <%= form_tag(flickr_images_path, method: :get) do |f| %>
     <%= label_tag :keyword, 'Search Keyword(s):' %>
-    <%= text_field_tag :keyword %>
+    <%= text_field_tag :keyword, keyword %>
     <%= submit_tag 'Search' %>
   <% end %>
 </div>

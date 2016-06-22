@@ -1,0 +1,41 @@
+// Place all the styles related to the flickr_images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  font-family: sans-serif;
+}
+
+div.search-result-item {
+  display: -webkit-flex;
+  display: flex;
+  height: 110px;
+  border: 1px solid;
+  margin-bottom: 1em;
+  width: 500px;
+  padding: 1em;
+
+  .left {
+    width: 120px;
+  }
+
+  .right {
+    width: 340px;
+    overflow: hidden;
+    -webkit-flex: 1;
+    flex: 1;
+  }
+}
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+  color: blue;
+  &:visited {
+    color: lightblue;
+  }
+
+  &:hover {
+    color: red;
+  }
+}
