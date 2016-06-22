@@ -1,0 +1,6 @@
+<div>
+  <%= link_to flickr_image_path(image.id) do %>
+    <%= image.title %>
+    <%= image_tag image.url(:thumb) %>
+  <% end %>
+</div>

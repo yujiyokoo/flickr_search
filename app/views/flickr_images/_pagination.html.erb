@@ -1,0 +1,13 @@
+<div>
+  <% unless pagination.blank? %>
+    <% unless pagination.page == 1 %>
+      <%= link_to '<<', flickr_images_path(keyword: keyword, page: 1) %>
+      <%= link_to '<', flickr_images_path(keyword: keyword, page: pagination.page - 1) %>
+    <% end %>
+    <%= pagination.page %> (of <%= pagination.pages %>)
+    <% unless pagination.page == pagination.pages %>
+      <%= link_to '>', flickr_images_path(keyword: keyword, page: pagination.page + 1) %>
+      <%= link_to '>>', flickr_images_path(keyword: keyword, page: pagination.pages) %>
+    <% end %>
+  <% end %>
+</div>

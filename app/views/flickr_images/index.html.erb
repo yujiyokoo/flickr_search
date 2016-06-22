@@ -1,16 +1,12 @@
+<h1>Flickr Search Example</h1>
 <div>
-  <%= form_for search_form, url: flickr_images_path, method: :get do |f| %>
-    <%= f.text_field :keyword %>
-    <%= f.submit 'Search' %>
+  <%= form_tag(flickr_images_path, method: :get) do |f| %>
+    <%= label_tag :keyword, 'Search Keyword(s):' %>
+    <%= text_field_tag :keyword %>
+    <%= submit_tag 'Search' %>
   <% end %>
 </div>
+<%= render(partial: 'pagination', object: flickr_images) %>
 <div>
-  <% flickr_images.each do |image| %>
-    <div>
-      <%= link_to flickr_image_path(image.id) do %>
-        <%= image.title %>
-        <%= image_tag image.url(:thumb) %>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render(partial: 'image', collection: flickr_images.to_a) %>
 </div>

@@ -2,7 +2,10 @@ class FlickrImagesController < ApplicationController
   def index
   end
 
-  helper_method :flickr, :flickr_images, :search_form, :flickr_image
+  def show
+  end
+
+  helper_method :flickr, :flickr_images, :search_form, :flickr_image, :keyword
 
   private
 
@@ -16,14 +19,18 @@ class FlickrImagesController < ApplicationController
 
   def flickr_images
     if keyword
-      @flickr_images ||= flickr.photos.search(text: keyword)
+      @flickr_images ||= flickr.photos.search(text: keyword, page: page)
     else
       []
     end
   end
 
+  def page
+    params.fetch(:page, 1)
+  end
+
   def keyword
-    params.fetch(:flickr_search_form, {}).fetch(:keyword, nil)
+    params.fetch(:keyword, nil)
   end
 
   def flickr_image
