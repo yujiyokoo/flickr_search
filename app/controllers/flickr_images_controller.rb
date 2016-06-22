@@ -14,7 +14,7 @@ class FlickrImagesController < ApplicationController
   end
 
   def flickr
-    @flickr ||= Flickr.new(YAML.load_file('config/flickr.yml'))
+    @flickr ||= Flickr.new(YAML.load(ERB.new(File.read("#{Rails.root}/config/flickr.yml.erb")).result))
   end
 
   def flickr_images
