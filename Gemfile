@@ -38,6 +38,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'launchy'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end

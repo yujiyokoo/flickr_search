@@ -1,0 +1,15 @@
+<div>
+  <% if flickr_image.present? %>
+    <div>
+      Image title: <%= flickr_image.title %>
+    </div>
+    <div>
+      Description: <%= flickr_image.description %>
+    </div>
+    <div>
+      <%= link_to flickr_image.url(:original) do %>
+        <%= image_tag flickr_image.url(:large) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
