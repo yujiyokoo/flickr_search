@@ -5,7 +5,7 @@ class FlickrImagesController < ApplicationController
   def show
   end
 
-  helper_method :flickr, :flickr_images, :search_form, :flickr_image, :keyword
+  helper_method :flickr, :flickr_images, :flickr_image, :keyword
 
   private
 
